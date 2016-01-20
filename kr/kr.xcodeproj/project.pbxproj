@@ -13,6 +13,11 @@
 		E3D85B041C4FB3690010D255 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D85B031C4FB3690010D255 /* Assets.xcassets */; };
 		E3D85B071C4FB3690010D255 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D85B051C4FB3690010D255 /* LaunchScreen.storyboard */; };
 		E3D85B121C4FB49E0010D255 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D85B111C4FB49E0010D255 /* ViewController.swift */; };
+		E3D85B1A1C4FB87C0010D255 /* SideMenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D85B191C4FB87C0010D255 /* SideMenuBuilder.swift */; };
+		E3D85B1D1C4FE4A70010D255 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D85B1B1C4FE4A70010D255 /* MenuViewController.swift */; };
+		E3D85B1E1C4FE4A70010D255 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D85B1C1C4FE4A70010D255 /* MenuViewController.xib */; };
+		E3D85B211C4FE4F10010D255 /* ReadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D85B1F1C4FE4F10010D255 /* ReadListViewController.swift */; };
+		E3D85B221C4FE4F10010D255 /* ReadListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D85B201C4FE4F10010D255 /* ReadListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		E3D85B081C4FB3690010D255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3D85B111C4FB49E0010D255 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ui/ViewController.swift; sourceTree = "<group>"; };
 		E3D85B151C4FB4ED0010D255 /* kr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kr-Bridging-Header.h"; sourceTree = "<group>"; };
+		E3D85B191C4FB87C0010D255 /* SideMenuBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuBuilder.swift; path = base/SideMenuBuilder.swift; sourceTree = "<group>"; };
+		E3D85B1B1C4FE4A70010D255 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = ui/MenuViewController.swift; sourceTree = "<group>"; };
+		E3D85B1C1C4FE4A70010D255 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = ui/MenuViewController.xib; sourceTree = "<group>"; };
+		E3D85B1F1C4FE4F10010D255 /* ReadListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadListViewController.swift; path = ui/ReadListViewController.swift; sourceTree = "<group>"; };
+		E3D85B201C4FE4F10010D255 /* ReadListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReadListViewController.xib; path = ui/ReadListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +99,10 @@
 			isa = PBXGroup;
 			children = (
 				E3D85B111C4FB49E0010D255 /* ViewController.swift */,
+				E3D85B1B1C4FE4A70010D255 /* MenuViewController.swift */,
+				E3D85B1C1C4FE4A70010D255 /* MenuViewController.xib */,
+				E3D85B1F1C4FE4F10010D255 /* ReadListViewController.swift */,
+				E3D85B201C4FE4F10010D255 /* ReadListViewController.xib */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -96,6 +110,7 @@
 		E3D85B0F1C4FB4680010D255 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				E3D85B191C4FB87C0010D255 /* SideMenuBuilder.swift */,
 			);
 			name = base;
 			sourceTree = "<group>";
@@ -180,7 +195,9 @@
 			files = (
 				E3D85B071C4FB3690010D255 /* LaunchScreen.storyboard in Resources */,
 				E3D85B041C4FB3690010D255 /* Assets.xcassets in Resources */,
+				E3D85B221C4FE4F10010D255 /* ReadListViewController.xib in Resources */,
 				E3D85B021C4FB3690010D255 /* Main.storyboard in Resources */,
+				E3D85B1E1C4FE4A70010D255 /* MenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +257,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3D85B121C4FB49E0010D255 /* ViewController.swift in Sources */,
+				E3D85B211C4FE4F10010D255 /* ReadListViewController.swift in Sources */,
 				E3D85AFD1C4FB3690010D255 /* AppDelegate.swift in Sources */,
+				E3D85B1A1C4FB87C0010D255 /* SideMenuBuilder.swift in Sources */,
+				E3D85B1D1C4FE4A70010D255 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
