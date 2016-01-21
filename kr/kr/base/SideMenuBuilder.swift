@@ -38,13 +38,13 @@ class SideMenuBuilder: NSObject {
     
     func build() {
         // 将两个vc加到container中
-        containVC.addChildViewController(leftVC)
-        containVC.view.addSubview(leftVC.view)
-        leftVC.didMoveToParentViewController(containVC)
-        
         containVC.addChildViewController(rightVC)
         containVC.view.addSubview(rightVC.view)
         rightVC.didMoveToParentViewController(containVC)
+        
+        containVC.addChildViewController(leftVC)
+        containVC.view.addSubview(leftVC.view)
+        leftVC.didMoveToParentViewController(containVC)
         
         // 添加一个按钮在左上角
         containVC.view.addSubview(menuButton)
@@ -52,23 +52,23 @@ class SideMenuBuilder: NSObject {
         
         // 设置约束
         leftVC.view.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(containVC.view.frame.origin.x)
-            make.width.equalTo(0)
-            make.top.equalTo(containVC.view.frame.origin.y + statusBarHeight)
-            make.bottom.equalTo(containVC.view.frame.origin.y + containVC.view.frame.height)
+            make.left.equalTo(containVC.view.snp_left)
+            make.right.equalTo(containVC.view.snp_left)
+            make.top.equalTo(containVC.view.snp_top).offset(statusBarHeight)
+            make.bottom.equalTo(containVC.view.snp_bottom)
         }
         
         // 设置约束
         rightVC.view.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(containVC.view.frame.origin.x)
-            make.width.equalTo(containVC.view.frame.size.width)
-            make.top.equalTo(containVC.view.frame.origin.y + statusBarHeight)
-            make.bottom.equalTo(containVC.view.frame.origin.y + containVC.view.frame.height)
+            make.left.equalTo(leftVC.view.snp_left)
+            make.right.equalTo(containVC.view.snp_right)
+            make.top.equalTo(containVC.view.snp_top).offset(statusBarHeight)
+            make.bottom.equalTo(containVC.view.snp_bottom)
         }
         
         menuButton.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(containVC.view.frame.origin.x)
-            make.top.equalTo(containVC.view.frame.origin.y + statusBarHeight)
+            make.left.equalTo(containVC.view.snp_left)
+            make.top.equalTo(containVC.view.snp_top).offset(statusBarHeight)
             make.width.equalTo(menuButton.frame.width)
             make.height.equalTo(menuButton.frame.height)
         }
