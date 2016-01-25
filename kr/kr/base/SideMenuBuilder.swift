@@ -11,6 +11,11 @@ import SnapKit
 import EasyAnimation
 import DKChainableAnimationKit
 
+@objc protocol SideMenuBuilderDelegate {
+    optional func willChangeLeftSpace(space:CGFloat)
+    optional func didChangeLeftSpace(space:CGFloat)
+}
+
 class SideMenuBuilder: NSObject {
     
     var containVC:UIViewController
@@ -29,11 +34,14 @@ class SideMenuBuilder: NSObject {
         return 20
     }
     
+    var delegate: SideMenuBuilderDelegate?
+    
     init(containVC:UIViewController, leftVC:UIViewController, rightVC:UIViewController, menuButton:UIButton) {
         self.containVC = containVC;
         self.leftVC = leftVC;
         self.rightVC = rightVC;
         self.menuButton = menuButton
+        self.delegate = nil
     }
     
     func build() {
@@ -85,12 +93,17 @@ class SideMenuBuilder: NSObject {
     }
     
     func changeLeftSpace(space:CGFloat) {
+        self.delegate!.willChangeLeftSpace!(space)
         if space == 0 {
-            leftVC.view.animation.makeWidth(space).anchorLeft.animate(0.2)
+            leftVC.view.animation.makeWidth(space).anchorLeft.animateWithCompletion(0.2, { () -> Void in
+                self.delegate!.didChangeLeftSpace!(0)
+            })
             rightVC.view.animation.makeX(space).animate(0.1)
         } else {
             leftVC.view.animation.makeWidth(space).anchorLeft.animate(0.1)
-            rightVC.view.animation.makeX(space).animate(0.2)
+            rightVC.view.animation.makeX(space).animateWithCompletion(0.2, { () -> Void in
+                self.delegate!.didChangeLeftSpace!(space)
+            })
         }
     }
 }

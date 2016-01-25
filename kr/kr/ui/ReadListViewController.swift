@@ -8,20 +8,38 @@
 
 import UIKit
 
-class ReadListViewController: UIViewController {
+class ReadListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.collectionViewLayout = SpringLayout()
+        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "identifier")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cellIdentifier = "identifier"
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath:indexPath)
+        cell.backgroundColor = UIColor.redColor()
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 10
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
     /*
     // MARK: - Navigation
 
