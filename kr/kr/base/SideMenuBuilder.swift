@@ -47,7 +47,7 @@ class SideMenuBuilder: NSObject {
         leftVC.didMoveToParentViewController(containVC)
         
         // 添加一个按钮在左上角
-        containVC.view.addSubview(menuButton)
+        rightVC.view.addSubview(menuButton)
         self.menuButton.addTarget(self, action: "menuButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // 设置约束
@@ -67,8 +67,8 @@ class SideMenuBuilder: NSObject {
         }
         
         menuButton.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(containVC.view.snp_left)
-            make.top.equalTo(containVC.view.snp_top).offset(statusBarHeight)
+            make.left.equalTo(rightVC.view.snp_left)
+            make.top.equalTo(rightVC.view.snp_top)
             make.width.equalTo(menuButton.frame.width)
             make.height.equalTo(menuButton.frame.height)
         }
@@ -85,7 +85,12 @@ class SideMenuBuilder: NSObject {
     }
     
     func changeLeftSpace(space:CGFloat) {
-        leftVC.view.animation.makeWidth(space).anchorLeft.animate(0.3)
-        rightVC.view.animation.makeX(space).animate(0.3)
+        if space == 0 {
+            leftVC.view.animation.makeWidth(space).anchorLeft.animate(0.2)
+            rightVC.view.animation.makeX(space).animate(0.1)
+        } else {
+            leftVC.view.animation.makeWidth(space).anchorLeft.animate(0.1)
+            rightVC.view.animation.makeX(space).animate(0.2)
+        }
     }
 }
