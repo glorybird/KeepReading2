@@ -11,7 +11,7 @@ import UIKit
 class SpringLayout: UICollectionViewFlowLayout {
     var animator: UIDynamicAnimator?
     
-    var horizontal:Bool = false
+    var invalidlayout:Bool = false
     
     override init() {
         super.init()
@@ -47,12 +47,43 @@ class SpringLayout: UICollectionViewFlowLayout {
         }
     }
     
+    func installBehaviorsDropDown (index:CGFloat, offset:CGFloat) {
+        invalidlayout = true
+        let contentSize = self.collectionViewContentSize()
+        let items = super.layoutAttributesForElementsInRect(CGRectMake(0, 0, contentSize.width, contentSize.height))
+        if animator!.behaviors.count == 0 {
+            for item in items!{
+                if item.indexPath.row > Int(index) {
+                    let behavior = UIAttachmentBehavior(item: item, attachedToAnchor: CGPointMake(item.center.x, item.center.y + offset))
+                    behavior.length = 0
+                    behavior.damping = 0.5
+                    behavior.frequency = 2.0
+                    animator!.addBehavior(behavior)
+                } else {
+                    let behavior = UIAttachmentBehavior(item: item, attachedToAnchor:item.center)
+                    behavior.length = 0
+                    behavior.damping = 0.5
+                    behavior.frequency = 2.0
+                    animator!.addBehavior(behavior)
+                }
+            }
+        }
+    }
+    
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return animator!.itemsInRect(rect) as? [UICollectionViewLayoutAttributes]
     }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return animator!.layoutAttributesForCellAtIndexPath(indexPath)
+        var attr = animator!.layoutAttributesForCellAtIndexPath(indexPath)
+        if attr == nil {
+            attr = super.layoutAttributesForItemAtIndexPath(indexPath)
+        }
+        return attr
+    }
+    
+    func removeAllBehavior() {
+        animator!.removeAllBehaviors()
     }
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
@@ -68,12 +99,12 @@ class SpringLayout: UICollectionViewFlowLayout {
         
         let horizontalDistance = newBounds.width - collectionView.bounds.width
         if horizontalDistance != 0 {
-            horizontal = true
-            animator!.removeAllBehaviors()
+            invalidlayout = true
+            removeAllBehavior()
             installBehaviors(horizontalDistance/2)
-        } else if horizontal == true {
-            horizontal = false
-            animator!.removeAllBehaviors()
+        } else if invalidlayout == true {
+            invalidlayout = false
+            removeAllBehavior()
             installBehaviors(0)
         }
 
