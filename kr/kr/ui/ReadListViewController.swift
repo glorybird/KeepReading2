@@ -8,18 +8,22 @@
 
 import UIKit
 
-class ReadListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ReadListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, KrCollectionViewCellDelegate, UIScrollViewDelegate, SpringLayoutDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
     var count:Int = 10
     
+    var downProgressCell:KrCollectionViewCell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+        (collectionView as UIScrollView).delegate = self
         collectionView.collectionViewLayout = SpringLayout()
-        collectionView.registerClass(KrCollectionViewCell.self, forCellWithReuseIdentifier: "identifier")
+        (collectionView.collectionViewLayout as! SpringLayout).delegate = self
+        collectionView.registerNib(UINib(nibName: "KrCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "identifier")
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,23 +35,41 @@ class ReadListViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         let cellIdentifier = "identifier"
         let cell:KrCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath:indexPath) as! KrCollectionViewCell
-        cell.backgroundColor = UIColor.redColor()
+        cell.resetToNornalStatus()
+        cell.delegate = self
         cell.layer.borderColor = UIColor.whiteColor().CGColor
         cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 10
-        cell.build()
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return count
     }
-    @IBAction func AddCell(sender: AnyObject) {
-        let cell = collectionView.cellForItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! KrCollectionViewCell
-        cell.down()
-        
-        let layout:SpringLayout = collectionView.collectionViewLayout as! SpringLayout
-        layout.removeAllBehavior()
-        layout.installBehaviorsDropDown(0, offset: cell.progressView!.frame.size.height + 10)
+    
+    func didDownProgressView(cell: KrCollectionViewCell) {
+        if downProgressCell != nil {
+            downProgressCell!.resetToNornalStatus()
+        }
+        let index = collectionView.indexPathForCell(cell)
+        if index != nil {
+            let springLayout = (collectionView.collectionViewLayout as! SpringLayout)
+            springLayout.removeAllBehavior()
+            springLayout.installBehaviorsDropDown(CGFloat(index!.row), offset:cell.progressView!.frame.size.height + 10)
+        }
+        downProgressCell = cell
+    }
+    
+    func didUpProgressView(cell: KrCollectionViewCell) {
+        let springLayout = (collectionView.collectionViewLayout as! SpringLayout)
+        springLayout.removeAllBehavior()
+        springLayout.installBehaviors(0.0)
+        downProgressCell = nil
+    }
+    
+    func changeToNewBounds(newBounds: CGRect) {
+        if downProgressCell != nil {
+            downProgressCell!.resetToNornalStatus()
+        }
     }
 }

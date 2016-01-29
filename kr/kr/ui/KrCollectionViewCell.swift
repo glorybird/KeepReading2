@@ -8,29 +8,49 @@
 
 import UIKit
 
+@objc protocol KrCollectionViewCellDelegate {
+    optional func didDownProgressView(cell:KrCollectionViewCell)
+    optional func didUpProgressView(cell:KrCollectionViewCell)
+}
+
+enum ProgressStatus {
+    case Normal
+    case DownSide
+}
+
+
 class KrCollectionViewCell: UICollectionViewCell {
     
-    var progressView:UIView?
+    @IBOutlet weak var progressView: UIView!
     
-    var atDown:Bool?
+    var delegate:KrCollectionViewCellDelegate?
     
-    func build() {
-        if progressView != nil {
-            progressView!.removeFromSuperview()
+    var status:ProgressStatus = ProgressStatus.Normal
+    
+    @IBAction func downProgressView(sender: AnyObject) {
+        if status == ProgressStatus.Normal {
+            progressView!.animation.moveY(frame.size.height).bounce.animate(0.6)
+            if delegate != nil {
+                delegate!.didDownProgressView!(self)
+            }
+            status = ProgressStatus.DownSide
+        } else {
+            progressView!.animation.moveY(-frame.size.height).animateWithCompletion(0.3, { () -> Void in
+                if self.delegate != nil {
+                    self.delegate!.didUpProgressView!(self)
+                }
+                self.status = ProgressStatus.Normal
+            })
         }
-        progressView = UIView(frame:CGRectMake(10, 10, frame.width - 20, frame.height - 20))
-        progressView!.backgroundColor = UIColor.yellowColor()
-        addSubview(progressView!)
-        clipsToBounds = false
-        atDown = false
     }
     
-    func down() {
-        if atDown == true {
+    func resetToNornalStatus() {
+        if status == ProgressStatus.Normal {
             return
         }
-        atDown = true
-        progressView!.animation.moveY(frame.size.height).bounce.animate(1.0)
+        
+        progressView!.center = CGPointMake(progressView!.center.x, progressView!.center.y - frame.size.height)
+        self.status = ProgressStatus.Normal
         
     }
 }

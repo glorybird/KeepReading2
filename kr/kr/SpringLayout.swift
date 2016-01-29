@@ -8,10 +8,16 @@
 
 import UIKit
 
+@objc protocol SpringLayoutDelegate {
+    optional func changeToNewBounds(newBounds: CGRect)
+}
+
 class SpringLayout: UICollectionViewFlowLayout {
     var animator: UIDynamicAnimator?
     
     var invalidlayout:Bool = false
+    
+    weak var delegate:SpringLayoutDelegate?
     
     override init() {
         super.init()
@@ -93,6 +99,10 @@ class SpringLayout: UICollectionViewFlowLayout {
             return false
         }
         
+        if delegate != nil {
+            delegate!.changeToNewBounds!(newBounds)
+        }
+        
         let contentOffset = collectionView.contentOffset.y
         let contentSize = collectionView.contentSize.height
         let collectionViewSize = collectionView.bounds.size.height
@@ -112,7 +122,6 @@ class SpringLayout: UICollectionViewFlowLayout {
             
             self.adjustItemCenterFolowingTouchLocation(newBounds: newBounds)
         }
-        
         return false
     }
     
