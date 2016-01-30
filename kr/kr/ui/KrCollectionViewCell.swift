@@ -27,15 +27,25 @@ class KrCollectionViewCell: UICollectionViewCell {
     
     var status:ProgressStatus = ProgressStatus.Normal
     
+    var running:Bool = false
+    
     @IBAction func downProgressView(sender: AnyObject) {
+        if running == true {
+            return
+        }
+        
+        running = true
         if status == ProgressStatus.Normal {
-            progressView!.animation.moveY(frame.size.height).bounce.animate(0.6)
+            progressView!.animation.moveY(frame.size.height).bounce.animateWithCompletion(0.6, { () -> Void in
+                self.running = false
+            })
             if delegate != nil {
                 delegate!.didDownProgressView!(self)
             }
             status = ProgressStatus.DownSide
         } else {
             progressView!.animation.moveY(-frame.size.height).animateWithCompletion(0.3, { () -> Void in
+                self.running = false
                 if self.delegate != nil {
                     self.delegate!.didUpProgressView!(self)
                 }
