@@ -10,6 +10,7 @@
 		6F3CE298DFDC8C6C77A7565D /* Pods_kr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35454D83D9E90310B5B8032B /* Pods_kr.framework */; };
 		E34D08881C57AEE7009E9624 /* KrCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D08871C57AEE7009E9624 /* KrCollectionViewCell.swift */; };
 		E371E5911C56568900A1A1EB /* SpringLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371E5901C56568900A1A1EB /* SpringLayout.swift */; };
+		E37FF8CD1C5D0EB500BA5B58 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37FF8CC1C5D0EB500BA5B58 /* ProgressView.swift */; };
 		E3D55D7A1C5B9C6B00C5852E /* KrCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D55D781C5B9C6B00C5852E /* KrCollectionViewCell.xib */; };
 		E3D85AFD1C4FB3690010D255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D85AFC1C4FB3690010D255 /* AppDelegate.swift */; };
 		E3D85B021C4FB3690010D255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D85B001C4FB3690010D255 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		35454D83D9E90310B5B8032B /* Pods_kr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34D08871C57AEE7009E9624 /* KrCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KrCollectionViewCell.swift; path = ui/KrCollectionViewCell.swift; sourceTree = "<group>"; };
 		E371E5901C56568900A1A1EB /* SpringLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringLayout.swift; sourceTree = "<group>"; };
+		E37FF8CC1C5D0EB500BA5B58 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		E3D55D781C5B9C6B00C5852E /* KrCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KrCollectionViewCell.xib; path = ui/KrCollectionViewCell.xib; sourceTree = "<group>"; };
 		E3D85AF91C4FB3690010D255 /* kr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D85AFC1C4FB3690010D255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				E3D85B201C4FE4F10010D255 /* ReadListViewController.xib */,
 				E34D08871C57AEE7009E9624 /* KrCollectionViewCell.swift */,
 				E3D55D781C5B9C6B00C5852E /* KrCollectionViewCell.xib */,
+				E37FF8CC1C5D0EB500BA5B58 /* ProgressView.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				E3D85AFD1C4FB3690010D255 /* AppDelegate.swift in Sources */,
 				E3D85B1A1C4FB87C0010D255 /* SideMenuBuilder.swift in Sources */,
 				E371E5911C56568900A1A1EB /* SpringLayout.swift in Sources */,
+				E37FF8CD1C5D0EB500BA5B58 /* ProgressView.swift in Sources */,
 				E34D08881C57AEE7009E9624 /* KrCollectionViewCell.swift in Sources */,
 				E3D85B1D1C4FE4A70010D255 /* MenuViewController.swift in Sources */,
 			);

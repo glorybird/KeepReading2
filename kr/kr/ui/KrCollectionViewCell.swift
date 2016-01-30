@@ -21,7 +21,7 @@ enum ProgressStatus {
 
 class KrCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var progressView: ProgressView!
     
     var delegate:KrCollectionViewCellDelegate?
     
@@ -61,6 +61,19 @@ class KrCollectionViewCell: UICollectionViewCell {
         
         progressView!.center = CGPointMake(progressView!.center.x, progressView!.center.y - frame.size.height)
         self.status = ProgressStatus.Normal
-        
+    }
+    
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        if self.status == ProgressStatus.DownSide {
+            let progressViewFrame = convertRect(progressView.frame, toView: self)
+            let inside = CGRectContainsPoint(progressViewFrame, point)
+            if inside == true {
+                return progressView.hitTest(convertPoint(point, toView:progressView), withEvent: event)
+            } else {
+                return super.hitTest(point, withEvent: event)
+            }
+        } else {
+            return super.hitTest(point, withEvent: event)
+        }
     }
 }
