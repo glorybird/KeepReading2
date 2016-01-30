@@ -102,11 +102,7 @@ class SpringLayout: UICollectionViewFlowLayout {
         if delegate != nil {
             delegate!.changeToNewBounds!(newBounds)
         }
-        
-        let contentOffset = collectionView.contentOffset.y
-        let contentSize = collectionView.contentSize.height
-        let collectionViewSize = collectionView.bounds.size.height
-        
+
         let horizontalDistance = newBounds.width - collectionView.bounds.width
         if horizontalDistance != 0 {
             invalidlayout = true
@@ -117,11 +113,9 @@ class SpringLayout: UICollectionViewFlowLayout {
             removeAllBehavior()
             installBehaviors(0)
         }
+        
+        self.adjustItemCenterFolowingTouchLocation(newBounds: newBounds)
 
-        if 0 <= contentOffset && contentOffset + collectionViewSize <= contentSize {
-            
-            self.adjustItemCenterFolowingTouchLocation(newBounds: newBounds)
-        }
         return false
     }
     

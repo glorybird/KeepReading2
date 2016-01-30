@@ -12,7 +12,7 @@ class ReadListViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var count:Int = 10
+    var count:Int = 5
     
     var downProgressCell:KrCollectionViewCell?
     
@@ -21,6 +21,7 @@ class ReadListViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView.dataSource = self
         collectionView.delegate = self
         (collectionView as UIScrollView).delegate = self
+        collectionView.alwaysBounceVertical = true
         collectionView.collectionViewLayout = SpringLayout()
         (collectionView.collectionViewLayout as! SpringLayout).delegate = self
         collectionView.registerNib(UINib(nibName: "KrCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "identifier")
