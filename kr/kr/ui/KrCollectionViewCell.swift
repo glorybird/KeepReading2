@@ -23,11 +23,23 @@ class KrCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var progressView: ProgressView!
     
+    @IBOutlet weak var cutView: CupView!
+    
+    
+    @IBOutlet weak var sliderInProgressView: UISlider!
+    
+    @IBOutlet weak var stepperInProgressView: UIStepper!
+    
+    
     var delegate:KrCollectionViewCellDelegate?
     
     var status:ProgressStatus = ProgressStatus.Normal
     
     var running:Bool = false
+    
+    override func awakeFromNib() {
+        cutView.changeProgress(1 - CGFloat(sliderInProgressView.value))
+    }
     
     @IBAction func downProgressView(sender: AnyObject) {
         if running == true {
@@ -75,5 +87,8 @@ class KrCollectionViewCell: UICollectionViewCell {
         } else {
             return super.hitTest(point, withEvent: event)
         }
+    }
+    @IBAction func sliderChangeValue(sender: AnyObject) {
+        cutView.changeProgress(1 - CGFloat(sliderInProgressView.value))
     }
 }

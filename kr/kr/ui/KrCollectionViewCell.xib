@@ -23,11 +23,14 @@
                                     <constraint firstAttribute="width" constant="94" id="DvY-Mo-35Y"/>
                                 </constraints>
                             </stepper>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="icM-9b-dE0">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="icM-9b-dE0">
                                 <rect key="frame" x="6" y="136" width="597" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="OuU-8n-ohF"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="sliderChangeValue:" destination="gTV-IL-0wX" eventType="valueChanged" id="vBt-Oc-QCD"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,8 +52,20 @@
                                     <action selector="downProgressView:" destination="gTV-IL-0wX" eventType="touchUpInside" id="iFz-fg-Inm"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knS-qt-Hky" customClass="CupView" customModule="kr" customModuleProvider="target">
+                                <rect key="frame" x="659" y="8" width="60" height="285"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Hsk-9i-ZhX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="knS-qt-Hky" firstAttribute="top" secondItem="CtI-WY-DcQ" secondAttribute="top" constant="8" id="183-Tc-zjB"/>
+                            <constraint firstAttribute="bottom" secondItem="knS-qt-Hky" secondAttribute="bottom" constant="8" id="lLN-m9-5eU"/>
+                            <constraint firstAttribute="trailing" secondItem="knS-qt-Hky" secondAttribute="trailing" constant="8" id="wzI-d1-HMX"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -68,7 +83,10 @@
             </constraints>
             <size key="customSize" width="727" height="317"/>
             <connections>
+                <outlet property="cutView" destination="knS-qt-Hky" id="EcK-eS-ZlD"/>
                 <outlet property="progressView" destination="Re8-cf-q2C" id="A6M-Hj-8ix"/>
+                <outlet property="sliderInProgressView" destination="icM-9b-dE0" id="RC3-xa-Hnh"/>
+                <outlet property="stepperInProgressView" destination="iVz-WN-cza" id="NNs-1N-c7Q"/>
             </connections>
             <point key="canvasLocation" x="789.5" y="651.5"/>
         </collectionViewCell>

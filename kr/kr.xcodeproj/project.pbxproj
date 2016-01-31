@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6F3CE298DFDC8C6C77A7565D /* Pods_kr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35454D83D9E90310B5B8032B /* Pods_kr.framework */; };
+		E32357981C5DDD32004808FE /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = E32357971C5DDD32004808FE /* SCSiriWaveformView.m */; };
+		E323579A1C5DDF03004808FE /* CupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32357991C5DDF03004808FE /* CupView.swift */; };
 		E34D08881C57AEE7009E9624 /* KrCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34D08871C57AEE7009E9624 /* KrCollectionViewCell.swift */; };
 		E371E5911C56568900A1A1EB /* SpringLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E371E5901C56568900A1A1EB /* SpringLayout.swift */; };
 		E37FF8CD1C5D0EB500BA5B58 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37FF8CC1C5D0EB500BA5B58 /* ProgressView.swift */; };
@@ -29,6 +31,9 @@
 		16982B93D68B0A0028A6ABBE /* Pods-kr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kr.release.xcconfig"; path = "Pods/Target Support Files/Pods-kr/Pods-kr.release.xcconfig"; sourceTree = "<group>"; };
 		2D0169EF5C8F6B48EE88190D /* Pods-kr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kr/Pods-kr.debug.xcconfig"; sourceTree = "<group>"; };
 		35454D83D9E90310B5B8032B /* Pods_kr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32357961C5DDD32004808FE /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
+		E32357971C5DDD32004808FE /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
+		E32357991C5DDF03004808FE /* CupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CupView.swift; path = ui/CupView.swift; sourceTree = "<group>"; };
 		E34D08871C57AEE7009E9624 /* KrCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KrCollectionViewCell.swift; path = ui/KrCollectionViewCell.swift; sourceTree = "<group>"; };
 		E371E5901C56568900A1A1EB /* SpringLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringLayout.swift; sourceTree = "<group>"; };
 		E37FF8CC1C5D0EB500BA5B58 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 				E34D08871C57AEE7009E9624 /* KrCollectionViewCell.swift */,
 				E3D55D781C5B9C6B00C5852E /* KrCollectionViewCell.xib */,
 				E37FF8CC1C5D0EB500BA5B58 /* ProgressView.swift */,
+				E32357991C5DDF03004808FE /* CupView.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -121,6 +127,8 @@
 		E3D85B0F1C4FB4680010D255 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				E32357961C5DDD32004808FE /* SCSiriWaveformView.h */,
+				E32357971C5DDD32004808FE /* SCSiriWaveformView.m */,
 				E371E5901C56568900A1A1EB /* SpringLayout.swift */,
 				E3D85B191C4FB87C0010D255 /* SideMenuBuilder.swift */,
 			);
@@ -272,8 +280,10 @@
 				E3D85B121C4FB49E0010D255 /* ViewController.swift in Sources */,
 				E3D85B211C4FE4F10010D255 /* ReadListViewController.swift in Sources */,
 				E3D85AFD1C4FB3690010D255 /* AppDelegate.swift in Sources */,
+				E323579A1C5DDF03004808FE /* CupView.swift in Sources */,
 				E3D85B1A1C4FB87C0010D255 /* SideMenuBuilder.swift in Sources */,
 				E371E5911C56568900A1A1EB /* SpringLayout.swift in Sources */,
+				E32357981C5DDD32004808FE /* SCSiriWaveformView.m in Sources */,
 				E37FF8CD1C5D0EB500BA5B58 /* ProgressView.swift in Sources */,
 				E34D08881C57AEE7009E9624 /* KrCollectionViewCell.swift in Sources */,
 				E3D85B1D1C4FE4A70010D255 /* MenuViewController.swift in Sources */,
