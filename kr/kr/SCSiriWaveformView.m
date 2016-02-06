@@ -109,7 +109,7 @@ static const CGFloat kDefaultSecondaryLineWidth = 1.0f;
 			} else {
 				CGContextAddLineToPoint(context, x, y);
 			}
-            CGContextAddLineToPoint(context, x, self.frame.size.height);
+            CGContextAddLineToPoint(context, x, y + self.frame.size.height);
 		}
 		
 		CGContextStrokePath(context);
